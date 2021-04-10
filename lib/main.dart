@@ -8,6 +8,18 @@ void main() {
   runApp(MyApp());
 }
 
+Expanded buildKey(Color col, int num){
+  return Expanded(
+    child: FlatButton(
+      color: col,
+      onPressed: () {
+        playNotes(num);
+      },
+      child: Text('ola'),
+    ),
+  );
+}
+
 void playNotes(int noteNum) {
   final player = AudioCache();
   player.play('assets_note$noteNum.wav');
@@ -22,72 +34,13 @@ class MyApp extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Expanded(
-                child: FlatButton(
-                  color: Colors.blue,
-                  onPressed: () {
-                    playNotes(1);
-                  },
-                  child: Text('ola'),
-                ),
-              ),
-              Expanded(
-                child: FlatButton(
-                  color: Colors.blueAccent,
-                  onPressed: () {
-                    playNotes(2);
-                  },
-                  child: Text('ola'),
-                ),
-              ),
-              Expanded(
-                child: FlatButton(
-                  color: Colors.blueGrey,
-                  onPressed: () {
-                    playNotes(3);
-                  },
-                  child: Text('ola'),
-                ),
-              ),
-              Expanded(
-                child: FlatButton(
-                  color: Colors.lightBlue,
-                  onPressed: () {
-                    playNotes(4);
-                  },
-                  child: Text('ola'),
-                ),
-              ),
-
-              Expanded(
-                child: FlatButton(
-                  color: Colors.lightBlueAccent,
-                  onPressed: () {
-                    playNotes(5);
-                  },
-                  child: Text('ola'),
-                ),
-              ),
-
-              Expanded(
-                child: FlatButton(
-                  color: Colors.deepPurpleAccent,
-                  onPressed: () {
-                    playNotes(6);
-                  },
-                  child: Text('ola'),
-                ),
-              ),
-
-              Expanded(
-                child: FlatButton(
-                  color: Colors.deepPurple,
-                  onPressed: () {
-                    playNotes(7);
-                  },
-                  child: Text('ola'),
-                ),
-              ),
+              buildKey(Colors.blue, 1),
+              buildKey(Colors.blueAccent, 2),
+              buildKey(Colors.blueGrey, 3),
+              buildKey(Colors.lightBlue, 4),
+              buildKey(Colors.lightBlueAccent, 5),
+              buildKey(Colors.deepPurpleAccent, 6),
+              buildKey(Colors.deepPurple, 7),
             ],
           ),
         ),
